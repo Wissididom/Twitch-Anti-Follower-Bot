@@ -20,11 +20,12 @@ client.on('message', (channel, tags, message, self) => {
     if (message.toLowerCase() === '!antifollowerping') {
         client.say(channel, 'antifollowerpong');
     }
-    if (!tags.badges.broadcaster || tags.badges.moderator || tags.badges.subscriber || tags.badges.vip) {
+    if (tags.badges.broadcaster || tags.badges.moderator || tags.badges.subscriber || tags.badges.vip) {
         console.log(`Bypassed by Badges of ${tags.username}: ${message}`);
     } else {
         // Example message: "Buy viewers, followers and primes on yourfollowz. com"
-        if (message.match(/Buy (?:(?:viewers|followers|primes|and),? ?)+ on .+\. ?com/gi)) {
+        // Example message: "Wanna become famous? Buy viewers, followers and primes on viewers. shop "
+        if (message.match(/.*Buy (?:(?:viewers|followers|primes|and),? ?)+ on .+\. ?(?:com|shop)/gi)) {
             client.deletemessage(channel, tags.id);
             console.log(`Deleted Message by ${tags.username}: ${message}`);
         } else {
