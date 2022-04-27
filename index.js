@@ -23,8 +23,8 @@ client.on('message', (channel, tags, message, self) => {
     if (tags.badges.broadcaster || tags.badges.moderator || tags.badges.subscriber || tags.badges.vip) {
         console.log(`Bypassed by Badges of ${tags.username}: ${message}`);
     } else {
-        // Example message: "Buy viewers, followers and primes on yourfollowz. com"
-        // Example message: "Wanna become famous? Buy viewers, followers and primes on viewers. shop "
+        // Example message: "Buy viewers, followers and primes on website. com"
+        // Example message: "Wanna become famous? Buy viewers, followers and primes on website. shop "
         if (message.match(/.*Buy (?:(?:viewers|followers|primes|and),? ?)+ on .+\. ?(?:com|shop)/gi)) {
             client.deletemessage(channel, tags.id);
             console.log(`Deleted Message by ${tags.username}: ${message}`);
