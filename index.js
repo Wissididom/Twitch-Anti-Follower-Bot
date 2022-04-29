@@ -20,7 +20,7 @@ client.on('message', (channel, tags, message, self) => {
     if (message.toLowerCase() === '!antifollowerping') {
         client.say(channel, 'antifollowerpong');
     }
-    if (tags.badges.broadcaster || tags.badges.moderator || tags.badges.subscriber || tags.badges.vip) {
+    if (tags.badges?.broadcaster || tags.badges?.moderator || tags.badges?.subscriber || tags.badges?.vip) {
         console.log(`Bypassed by Badges of ${tags.username}: ${message}`);
     } else {
         // Example message: "Buy viewers, followers and primes on website. com"
