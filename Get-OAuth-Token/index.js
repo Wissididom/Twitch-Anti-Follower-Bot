@@ -8,11 +8,15 @@ const app = express();
 const port = 3000;
 app.get('/', (req, res) => {
 	res.setHeader('content-type', 'text/plain');
-	if (req.query.code)
+	if (req.query.code) {
 		res.send(`oauth:${req.query.code}`);
-	else
+		server.close(() => {
+			console.log('Server shutdown!');
+		});
+	} else {
 		res.send(`${req.query.error}\n${req.query.error_description}`);
+	}
 });
-app.listen(port, () => {
+const server = app.listen(port, () => {
 	console.log(`Server listening on port ${port}`);
 });
