@@ -25,7 +25,8 @@ client.on('message', async (channel, tags, message, self) => {
     } else {
         // Example message: "Buy viewers, followers and primes on website. com"
         // Example message: "Wanna become famous? Buy viewers, followers and primes on website. shop "
-        if (message.match(/.*Buy (?:(?:viewers|followers|primes|and),? ?)+ on .+\. ?(?:com|shop)/gi)) {
+        // Example message: "Get viewers, followers and primes on website. com"
+        if (message.match(/.*(?:Buy|Get) (?:(?:viewers|followers|primes|and),? ?)+ on .+\. ?(?:com|shop|store)/gi)) {
 			try {
             	await client.deletemessage(channel, tags.id);
             	console.log(`Deleted Message by ${tags.username}: ${message}`);
